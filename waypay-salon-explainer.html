@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WayPay Salon Explainer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        waypay: {
+                            green: '#059669',
+                            greenlight: '#10b981',
+                            dark: '#1f2937',
+                            light: '#f9fafb'
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideRight { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        
+        .video-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        
+        .scene.active { opacity: 1; z-index: 10; }
+        
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #059669, #10b981);
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        
+        .voiceover {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            z-index: 100;
+            max-width: 800px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .voiceover.active { opacity: 1; }
+
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 200;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #059669;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-white m-0 p-0">
+
+    <div class="language-selector">
+        <button class="lang-btn active" data-lang="da">DA</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="sv">SV</button>
+        <button class="lang-btn" data-lang="no">NO</button>
+    </div>
+
+    <div class="progress-bar" id="progress"></div>
+    
+    <div class="video-container">
+        
+        <!-- Scene 1: Salon Pain Points -->
+        <div class="scene active bg-gradient-to-br from-white to-emerald-50" id="scene1">
+            <div class="text-center max-w-4xl px-8">
+                <div class="inline-flex items-center gap-3 mb-8" style="animation: fadeIn 0.8s ease forwards">
+                    <div class="w-14 h-14 bg-waypay-green rounded-xl flex items-center justify-center">
+                        <i class="fa fa-scissors text-white text-2xl"></i>
+                    </div>
+                    <h1 class="text-4xl font-bold text-waypay-dark">WayPay for Saloner</h1>
+                </div>
+                
+                <h2 class="text-5xl md:text-6xl font-bold text-waypay-dark mb-6" data-i18n="scene1.title" style="animation: fadeIn 0.8s ease 0.3s forwards; opacity:0">
+                    Stop at spilde tid
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="text-center" style="animation: scaleIn 0.6s ease 0.6s forwards; opacity:0">
+                        <div class="text-5xl mb-4">🤷‍♂️</div>
+                        <div class="text-xl font-bold text-waypay-dark" data-i18n="scene1.point1">No-show kunder</div>
+                    </div>
+                    <div class="text-center" style="animation: scaleIn 0.6s ease 0.9s forwards; opacity:0">
+                        <div class="text-5xl mb-4">📝</div>
+                        <div class="text-xl font-bold text-waypay-dark" data-i18n="scene1.point2">Endløs admin</div>
+                    </div>
+                    <div class="text-center" style="animation: scaleIn 0.6s ease 1.2s forwards; opacity:0">
+                        <div class="text-5xl mb-4">⏳</div>
+                        <div class="text-xl font-bold text-waypay-dark" data-i18n="scene1.point3">Vent på betaling</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 2: No-Show Solution -->
+        <div class="scene bg-white" id="scene2">
+            <div class="max-w-6xl px-8 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 text-waypay-dark" data-i18n="scene2.title">Ingen flere no-shows</h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed" data-i18n="scene2.description">
+                        Kunder betaler automatisk når de booker. Du får pengene straks efter behandlingen. Ingen påmindelser, ingen fakturaer, ingen ventetid.
+                    </p>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-waypay-green">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <span class="text-lg" data-i18n="scene2.item1">Forudbetaling ved booking</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-waypay-green">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <span class="text-lg" data-i18n="scene2.item2">Automatiske SMS påmindelser</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-waypay-green">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <span class="text-lg" data-i18n="scene2.item3">95% færre no-shows</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-xl">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">✅</div>
+                            <div class="text-3xl font-bold mb-2" data-i18n="scene2.box.title">100% sikker betaling</div>
+                            <div class="text-gray-500" data-i18n="scene2.box.sub">Før kunden ankommer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 3: Complete Salon System -->
+        <div class="scene bg-gradient-to-b from-white to-gray-50" id="scene3">
+            <div class="max-w-6xl px-8">
+                <h2 class="text-4xl font-bold mb-12 text-center text-waypay-dark" data-i18n="scene3.title">Alt din salon har brug for</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-waypay-green mb-6">
+                            <i class="fa fa-calendar text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3" data-i18n="scene3.feature1.title">Online Booking</h4>
+                        <p class="text-gray-500" data-i18n="scene3.feature1.desc">Dine kunder kan booke døgnet rundt. Kalender synkroniseres automatisk.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-waypay-green mb-6">
+                            <i class="fa fa-users text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3" data-i18n="scene3.feature2.title">Medarbejderstyring</h4>
+                        <p class="text-gray-500" data-i18n="scene3.feature2.desc">Administrer alle medarbejdere, deres kalendere og provision automatisk.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-waypay-green mb-6">
+                            <i class="fa fa-credit-card text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3" data-i18n="scene3.feature3.title">Alle betalingsmetoder</h4>
+                        <p class="text-gray-500" data-i18n="scene3.feature3.desc">MobilePay, Vipps, Swish, Visa, Mastercard - Alt inkluderet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 4: Pricing -->
+        <div class="scene bg-white" id="scene4">
+            <div class="max-w-5xl px-8 text-center">
+                <h2 class="text-4xl font-bold mb-6 text-waypay-dark" data-i18n="scene4.title">Kun 8% - intet andet</h2>
+                <p class="text-xl text-gray-600 mb-12" data-i18n="scene4.sub">Du betaler KUN når du tjener penge. Ingen binding.</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="text-5xl font-black text-waypay-green">0 kr.</div>
+                        <div class="text-gray-500 text-lg mt-2" data-i18n="scene4.price1">Opstart</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-black text-waypay-green">0 kr.</div>
+                        <div class="text-gray-500 text-lg mt-2" data-i18n="scene4.price2">Per måned</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-black text-waypay-green">8%</div>
+                        <div class="text-gray-500 text-lg mt-2" data-i18n="scene4.price3">Kun ved salg</div>
+                    </div>
+                </div>
+
+                <div class="mt-12 p-6 bg-emerald-50 rounded-xl">
+                    <p class="text-lg" data-i18n="scene4.note">👉 Ingen skjulte omkostninger. Ingen binding. Du kan ophøre når som helst.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 5: 4 Steps -->
+        <div class="scene bg-gradient-to-b from-gray-50 to-white" id="scene5">
+            <div class="max-w-5xl px-8">
+                <h2 class="text-4xl font-bold mb-12 text-center text-waypay-dark" data-i18n="scene5.title">Du er igang på 5 minutter</h2>
+                
+                <div class="space-y-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold" data-i18n="scene5.step1.title">Opret konto</h4>
+                            <p class="text-gray-500" data-i18n="scene5.step1.desc">Udfyld dine virksomhedsoplysninger.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold" data-i18n="scene5.step2.title">Forbind Stripe</h4>
+                            <p class="text-gray-500" data-i18n="scene5.step2.desc">Sikker betalingsbehandling på 2 minutter.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold" data-i18n="scene5.step3.title">Tilføj ydelser</h4>
+                            <p class="text-gray-500" data-i18n="scene5.step3.desc">Opret dine behandlinger og priser.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">4</div>
+                        <div>
+                            <h4 class="text-xl font-bold" data-i18n="scene5.step4.title">Færdig!</h4>
+                            <p class="text-gray-500" data-i18n="scene5.step4.desc">Del dit bookinglink og modtag bestillinger.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 6: CTA -->
+        <div class="scene bg-gradient-to-br from-emerald-500 to-emerald-600" id="scene6">
+            <div class="text-center max-w-3xl px-8">
+                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="scene6.title">Klar til at starte?</h2>
+                <p class="text-2xl text-emerald-100 mb-12" data-i18n="scene6.sub">
+                    Ingen binding. Ingen risiko. Du betaler kun når du tjener penge.
+                </p>
+                
+                <a href="https://waypay.dk/da/for/salons/" target="_blank" class="inline-block bg-white text-waypay-green px-12 py-5 rounded-xl font-bold text-xl transition-all transform hover:scale-105 shadow-xl">
+                    <span data-i18n="scene6.cta">Start din salon konto nu</span> <i class="fa fa-arrow-right ml-3"></i>
+                </a>
+                
+                <p class="mt-8 text-emerald-200">waypay.dk</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="voiceover" id="voiceover">
+        <p id="voiceoverText" class="text-lg text-gray-700"></p>
+    </div>
+
+    <script>
+        const translations = {
+            da: {
+                voiceovers: [
+                    "Hej og velkommen til WayPay for saloner.",
+                    "Ingen flere no-shows. Kunder betaler når de booker.",
+                    "Du får et komplet bookingsystem bygget til saloner.",
+                    "Kun 8% pr transaktion. Intet andet.",
+                    "Du er igang på mindre end 5 minutter.",
+                    "Start din gratis salon konto i dag på waypay.dk"
+                ]
+            },
+            en: {
+                scene1: {
+                    title: "Stop wasting time",
+                    point1: "No-show clients",
+                    point2: "Endless admin",
+                    point3: "Waiting for payment"
+                },
+                scene2: {
+                    title: "No more no-shows",
+                    description: "Customers pay automatically when booking. You get paid immediately after treatment. No reminders, no invoices, no waiting.",
+                    item1: "Pre-payment at booking",
+                    item2: "Automatic SMS reminders",
+                    item3: "95% fewer no-shows",
+                    box: { title: "100% secure payment", sub: "Before customer arrives" }
+                },
+                scene3: {
+                    title: "Everything your salon needs",
+                    feature1: { title: "Online Booking", desc: "Your customers can book 24/7. Calendar syncs automatically." },
+                    feature2: { title: "Employee Management", desc: "Manage all employees, their calendars and commission automatically." },
+                    feature3: { title: "All payment methods", desc: "MobilePay, Vipps, Swish, Visa, Mastercard - All included." }
+                },
+                scene4: {
+                    title: "Only 8% - nothing else",
+                    sub: "You ONLY pay when you earn money. No binding.",
+                    price1: "Setup",
+                    price2: "Per month",
+                    price3: "Only on sales",
+                    note: "👉 No hidden costs. No binding. You can cancel anytime."
+                },
+                scene5: {
+                    title: "You're up in 5 minutes",
+                    step1: { title: "Create account", desc: "Fill in your company information." },
+                    step2: { title: "Connect Stripe", desc: "Secure payment processing in 2 minutes." },
+                    step3: { title: "Add services", desc: "Create your treatments and prices." },
+                    step4: { title: "Done!", desc: "Share your booking link and receive orders." }
+                },
+                scene6: {
+                    title: "Ready to start?",
+                    sub: "No binding. No risk. You only pay when you earn money.",
+                    cta: "Start your salon account now"
+                },
+                voiceovers: [
+                    "Hello and welcome to WayPay for salons.",
+                    "No more no-shows. Customers pay when booking.",
+                    "You get a complete booking system built for salons.",
+                    "Only 8% per transaction. Nothing else.",
+                    "You're up and running in less than 5 minutes.",
+                    "Start your free salon account today at waypay.dk"
+                ]
+            },
+            de: {
+                scene1: {
+                    title: "Verschwende keine Zeit mehr",
+                    point1: "No-Show Kunden",
+                    point2: "Endlose Administration",
+                    point3: "Warte auf Zahlung"
+                },
+                scene2: {
+                    title: "Keine No-Shows mehr",
+                    description: "Kunden zahlen automatisch bei der Buchung. Du bekommst das Geld sofort nach der Behandlung. Keine Erinnerungen, keine Rechnungen, kein Warten.",
+                    item1: "Vorauszahlung bei Buchung",
+                    item2: "Automatische SMS Erinnerungen",
+                    item3: "95% weniger No-Shows",
+                    box: { title: "100% sichere Zahlung", sub: "Bevor der Kunde ankommt" }
+                },
+                scene3: {
+                    title: "Alles was dein Salon braucht",
+                    feature1: { title: "Online Buchung", desc: "Deine Kunden können rund um die Uhr buchen. Kalender synchronisiert automatisch." },
+                    feature2: { title: "Mitarbeiterverwaltung", desc: "Verwalte alle Mitarbeiter, ihre Kalender und Provision automatisch." },
+                    feature3: { title: "Alle Zahlungsmethoden", desc: "MobilePay, Vipps, Swish, Visa, Mastercard - Alle inkludiert." }
+                },
+                scene4: {
+                    title: "Nur 8% - sonst nichts",
+                    sub: "Du zahlst NUR wenn du Geld verdienst. Keine Bindung.",
+                    price1: "Einrichtung",
+                    price2: "Pro Monat",
+                    price3: "Nur bei Verkauf",
+                    note: "👉 Keine versteckten Kosten. Keine Bindung. Du kannst jederzeit kündigen."
+                },
+                scene5: {
+                    title: "Du bist in 5 Minuten bereit",
+                    step1: { title: "Konto erstellen", desc: "Gib deine Unternehmensdaten ein." },
+                    step2: { title: "Stripe verbinden", desc: "Sichere Zahlungsabwicklung in 2 Minuten." },
+                    step3: { title: "Leistungen hinzufügen", desc: "Erstelle deine Behandlungen und Preise." },
+                    step4: { title: "Fertig!", desc: "Teile deinen Buchungslink und empfange Bestellungen." }
+                },
+                scene6: {
+                    title: "Bereit zu starten?",
+                    sub: "Keine Bindung. Kein Risiko. Du zahlst nur wenn du Geld verdienst.",
+                    cta: "Starte dein Salon Konto jetzt"
+                },
+                voiceovers: [
+                    "Hallo und willkommen bei WayPay für Salons.",
+                    "Keine No-Shows mehr. Kunden zahlen bei der Buchung.",
+                    "Du bekommst ein komplettes Buchungssystem für Salons.",
+                    "Nur 8% pro Transaktion. Sonst nichts.",
+                    "Du bist in weniger als 5 Minuten bereit.",
+                    "Starte dein kostenloses Salon Konto heute auf waypay.dk"
+                ]
+            },
+            sv: {
+                scene1: {
+                    title: "Slösa inte tid längre",
+                    point1: "No-show kunder",
+                    point2: "Oändlig admin",
+                    point3: "Vänta på betalning"
+                },
+                scene2: {
+                    title: "Inga fler no-shows",
+                    description: "Kunder betalar automatiskt vid bokning. Du får betalning direkt efter behandling. Inga påminnelser, inga fakturor, ingen väntan.",
+                    item1: "Förbetalning vid bokning",
+                    item2: "Automatiska SMS påminnelser",
+                    item3: "95% färre no-shows",
+                    box: { title: "100% säker betalning", sub: "Innan kunden anländer" }
+                },
+                scene3: {
+                    title: "Allt din salon behöver",
+                    feature1: { title: "Online Bokning", desc: "Dina kunder kan boka dygnet runt. Kalender synkar automatiskt." },
+                    feature2: { title: "Anställdhantering", desc: "Hantera alla anställda, deras kalendrar och provision automatiskt." },
+                    feature3: { title: "Alla betalningsmetoder", desc: "MobilePay, Vipps, Swish, Visa, Mastercard - Alla inkluderade." }
+                },
+                scene4: {
+                    title: "Endast 8% - inget annat",
+                    sub: "Du betalar BARA när du tjänar pengar. Ingen bindning.",
+                    price1: "Uppstart",
+                    price2: "Per månad",
+                    price3: "Endast vid försäljning",
+                    note: "👉 Inga dolda kostnader. Ingen bindning. Du kan säga upp när som helst."
+                },
+                scene5: {
+                    title: "Du är igång på 5 minuter",
+                    step1: { title: "Skapa konto", desc: "Fyll i dina företagsuppgifter." },
+                    step2: { title: "Anslut Stripe", desc: "Säker betalningshantering på 2 minuter." },
+                    step3: { title: "Lägg till tjänster", desc: "Skapa dina behandlingar och priser." },
+                    step4: { title: "Klar!", desc: "Dela din bokningslänk och ta emot beställningar." }
+                },
+                scene6: {
+                    title: "Redo att börja?",
+                    sub: "Ingen bindning. Ingen risk. Du betalar bara när du tjänar pengar.",
+                    cta: "Starta ditt salon konto nu"
+                },
+                voiceovers: [
+                    "Hej och välkommen till WayPay för salonger.",
+                    "Inga fler no-shows. Kunder betalar när de bokar.",
+                    "Du får ett komplett bokningssystem byggt för salonger.",
+                    "Endast 8% per transaktion. Inget annat.",
+                    "Du är igång på mindre än 5 minuter.",
+                    "Starta ditt kostnadsfria salon konto idag på waypay.dk"
+                ]
+            },
+            no: {
+                scene1: {
+                    title: "Slutt å kaste bort tid",
+                    point1: "No-show kunder",
+                    point2: "Endeløs admin",
+                    point3: "Vent på betaling"
+                },
+                scene2: {
+                    title: "Ingen flere no-shows",
+                    description: "Kunder betaler automatisk når de bestiller. Du får betaling umiddelbart etter behandling. Ingen påminnelser, ingen fakturaer, ingen ventetid.",
+                    item1: "Forhåndsbetaling ved bestilling",
+                    item2: "Automatiske SMS påminnelser",
+                    item3: "95% færre no-shows",
+                    box: { title: "100% sikker betaling", sub: "Før kunden ankommer" }
+                },
+                scene3: {
+                    title: "Alt din salon trenger",
+                    feature1: { title: "Online Bestilling", desc: "Dine kunder kan bestille døgnet rundt. Kalender synkroniseres automatisk." },
+                    feature2: { title: "Ansattstyring", desc: "Administrer alle ansatte, deres kalendere og provisjon automatisk." },
+                    feature3: { title: "Alle betalingsmetoder", desc: "MobilePay, Vipps, Swish, Visa, Mastercard - Alt inkludert." }
+                },
+                scene4: {
+                    title: "Bare 8% - ingenting annet",
+                    sub: "Du betaler BARE når du tjener penger. Ingen binding.",
+                    price1: "Oppstart",
+                    price2: "Per måned",
+                    price3: "Bare ved salg",
+                    note: "👉 Ingen skjulte kostnader. Ingen binding. Du kan si opp når som helst."
+                },
+                scene5: {
+                    title: "Du er i gang på 5 minutter",
+                    step1: { title: "Opprett konto", desc: "Fyll inn virksomhetsinformasjonen din." },
+                    step2: { title: "Koble til Stripe", desc: "Sikker betalingsbehandling på 2 minutter." },
+                    step3: { title: "Legg til tjenester", desc: "Opprett dine behandlinger og priser." },
+                    step4: { title: "Ferdig!", desc: "Del bestillingslenken din og motta bestillinger." }
+                },
+                scene6: {
+                    title: "Klar til å starte?",
+                    sub: "Ingen binding. Ingen risiko. Du betaler bare når du tjener penger.",
+                    cta: "Start din salon konto nå"
+                },
+                voiceovers: [
+                    "Hei og velkommen til WayPay for saloner.",
+                    "Ingen flere no-shows. Kunder betaler når de bestiller.",
+                    "Du får et komplett bestillingssystem bygd for saloner.",
+                    "Bare 8% per transaksjon. Ingenting annet.",
+                    "Du er i gang på mindre enn 5 minutter.",
+                    "Start din gratis salon konto i dag på waypay.dk"
+                ]
+            }
+        };
+
+        const scenes = document.querySelectorAll('.scene');
+        const progress = document.getElementById('progress');
+        const voiceover = document.getElementById('voiceover');
+        const voiceoverText = document.getElementById('voiceoverText');
+        
+        let currentScene = 0;
+        let sceneTimer;
+        let progressTimer;
+        let progressValue = 0;
+        let currentLang = 'da';
+        const sceneDuration = 6000;
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let value = translations[lang];
+                for (const k of keys) {
+                    value = value?.[k];
+                }
+                if (value) el.textContent = value;
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            document.documentElement.lang = lang;
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        function showScene(index) {
+            scenes.forEach((scene, i) => {
+                scene.classList.toggle('active', i === index);
+            });
+            
+            const voiceovers = translations[currentLang]?.voiceovers || translations.da.voiceovers;
+            voiceoverText.textContent = voiceovers[index];
+            voiceover.classList.add('active');
+            
+            progressValue = 0;
+            clearInterval(progressTimer);
+            progressTimer = setInterval(() => {
+                progressValue += 100 / (sceneDuration / 100);
+                progress.style.width = `${progressValue}%`;
+            }, 100);
+            
+            clearTimeout(sceneTimer);
+            sceneTimer = setTimeout(() => {
+                if (currentScene < scenes.length - 1) {
+                    currentScene++;
+                    showScene(currentScene);
+                } else {
+                    clearInterval(progressTimer);
+                    progress.style.width = '100%';
+                    voiceover.classList.remove('active');
+                }
+            }, sceneDuration);
+        }
+
+        // Start video
+        setTimeout(() => showScene(0), 1000);
+
+        // Click to skip forward
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-selector') && !e.target.closest('a')) {
+                if (currentScene < scenes.length - 1) {
+                    currentScene++;
+                    showScene(currentScene);
+                }
+            }
+        });
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentScene < scenes.length - 1) {
+                currentScene++;
+                showScene(currentScene);
+            }
+            if (e.key === 'ArrowLeft' && currentScene > 0) {
+                currentScene--;
+                showScene(currentScene);
+            }
+        });
+    </script>
+</body>
+</html>

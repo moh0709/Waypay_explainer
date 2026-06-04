@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WayPay Start Guide - Helt Gratis og Nemt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#10b981',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .animate-fade-in {
+                animation: fadeIn 0.8s ease-in-out forwards;
+            }
+            .animate-slide-up {
+                animation: slideUp 0.6s ease-out forwards;
+            }
+            .animate-scale-in {
+                animation: scaleIn 0.5s ease-out forwards;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .slide {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 min-h-screen text-white overflow-x-hidden">
+
+    <!-- Progress bar -->
+    <div id="progressBar" class="fixed top-0 left-0 h-1 bg-blue-500 z-50 transition-all duration-300 w-0"></div>
+
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="text-center mb-16 pt-8">
+            <div class="inline-flex items-center gap-3 mb-6 animate-fade-in">
+                <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                    <i class="fa fa-credit-card text-white text-xl"></i>
+                </div>
+                <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">WayPay</h1>
+            </div>
+            <h2 class="text-5xl md:text-6xl font-black mb-6 animate-slide-up" style="animation-delay: 0.2s">
+                Kom i gang på <span class="text-green-400">5 minutter</span>
+            </h2>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.4s">
+                <span class="text-green-400 font-bold">0 kr.</span> i opstart · Ingen månedsabonnement · Ingen binding
+            </p>
+        </header>
+
+        <!-- Presentation Slides -->
+        <div id="presentation" class="relative">
+
+            <!-- Slide 1: Introduktion -->
+            <div class="slide active mb-20" id="slide-1">
+                <div class="bg-white/5 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="inline-block bg-blue-500/20 text-blue-300 px-4 py-1 rounded-full text-sm font-medium mb-6">
+                                ✨ Hvorfor WayPay?
+                            </div>
+                            <h3 class="text-4xl font-bold mb-6">Nordens smarteste betalingsløsning</h3>
+                            <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+                                WayPay er en nordisk platform der samler booking og betaling i ét enkelt flow. 
+                                Du sparer administration, reducerer no-shows og automatiserer din forretning.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                    <span class="text-lg">Ingen opstartskostnader</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                    <span class="text-lg">Intet månedligt abonnement</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                    <span class="text-lg">Betal kun når du tjener penge</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl"></div>
+                            <div class="relative bg-slate-800 rounded-2xl p-6 border border-white/10">
+                                <div class="text-center">
+                                    <div class="text-6xl font-black text-green-400 mb-2">0 kr.</div>
+                                    <div class="text-xl text-slate-400">i fast omkostninger</div>
+                                    <div class="my-8 h-px bg-white/10"></div>
+                                    <div class="text-3xl font-bold mb-2">8%</div>
+                                    <div class="text-slate-400">per succesfuld transaktion</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Hvad får du -->
+            <div class="slide mb-20" id="slide-2">
+                <div class="text-center mb-12">
+                    <div class="inline-block bg-green-500/20 text-green-300 px-4 py-1 rounded-full text-sm font-medium mb-6">
+                        💎 Alt inkluderet
+                    </div>
+                    <h3 class="text-4xl font-bold">Alt får du med 8%</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10 hover:border-blue-500/50 transition-all">
+                        <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6">
+                            <i class="fa fa-calendar text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Booking System</h4>
+                        <p class="text-slate-400">Fuld booking funktion indbygget helt gratis. Dine kunder kan booke dig døgnet rundt.</p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10 hover:border-blue-500/50 transition-all">
+                        <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6">
+                            <i class="fa fa-mobile text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Nordiske Betalinger</h4>
+                        <p class="text-slate-400">MobilePay, Vipps, Swish og alle kort indkluderet. Få adgang til millioner af brugere.</p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10 hover:border-blue-500/50 transition-all">
+                        <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6">
+                            <i class="fa fa-file-text text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Automatisk Faktura</h4>
+                        <p class="text-slate-400">Vi håndterer den lovpligtige fakturering automatisk mellem dig og dine kunder.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 grid md:grid-cols-4 gap-4">
+                    <div class="text-center p-4">
+                        <div class="text-2xl mb-2 text-green-400"><i class="fa fa-globe"></i></div>
+                        <div class="font-medium">Webshop</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-2xl mb-2 text-green-400"><i class="fa fa-bell"></i></div>
+                        <div class="font-medium">Påmindelser</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-2xl mb-2 text-green-400"><i class="fa fa-headphones"></i></div>
+                        <div class="font-medium">Dansk Support</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-2xl mb-2 text-green-400"><i class="fa fa-refresh"></i></div>
+                        <div class="font-medium">Abonnementer</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: 4 Trin -->
+            <div class="slide mb-20" id="slide-3">
+                <div class="text-center mb-12">
+                    <div class="inline-block bg-cyan-500/20 text-cyan-300 px-4 py-1 rounded-full text-sm font-medium mb-6">
+                        ⚡ Sådan kommer du i gang
+                    </div>
+                    <h3 class="text-4xl font-bold">Kun 4 enkle trin</h3>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Du er klar til at tage imod betalinger på mindre end 5 minutter</p>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-cyan-500 -translate-x-1/2 rounded-full hidden md:block"></div>
+
+                    <div class="space-y-12 relative">
+                        <!-- Trin 1 -->
+                        <div class="md:flex items-center gap-8">
+                            <div class="md:w-1/2 md:text-right">
+                                <div class="bg-white/5 backdrop-blur rounded-2xl p-6 border border-white/10">
+                                    <div class="flex md:justify-end items-center gap-4 mb-4">
+                                        <div>
+                                            <h4 class="text-2xl font-bold">Trin 1: Kontaktoplysninger</h4>
+                                            <p class="text-slate-400">Udfyld dine personlige oplysninger</p>
+                                        </div>
+                                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">1</div>
+                                    </div>
+                                    <div class="text-slate-300">
+                                        <p>Indtast fornavn, efternavn, telefon og email. Vælg en adgangskode og du er klar til næste trin.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2"></div>
+                        </div>
+
+                        <!-- Trin 2 -->
+                        <div class="md:flex items-center gap-8">
+                            <div class="md:w-1/2"></div>
+                            <div class="md:w-1/2">
+                                <div class="bg-white/5 backdrop-blur rounded-2xl p-6 border border-white/10">
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">2</div>
+                                        <div>
+                                            <h4 class="text-2xl font-bold">Trin 2: Virksomhed</h4>
+                                            <p class="text-slate-400">Indtast din virksomhedsoplysninger</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-slate-300">
+                                        <p>Indtast CVR-nummer, virksomhedsnavn og adresse. Det tager 30 sekunder at udfylde.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trin 3 -->
+                        <div class="md:flex items-center gap-8">
+                            <div class="md:w-1/2 md:text-right">
+                                <div class="bg-white/5 backdrop-blur rounded-2xl p-6 border border-white/10">
+                                    <div class="flex md:justify-end items-center gap-4 mb-4">
+                                        <div>
+                                            <h4 class="text-2xl font-bold">Trin 3: Stripe Connect</h4>
+                                            <p class="text-slate-400">Forbind din betalingskonto</p>
+                                        </div>
+                                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">3</div>
+                                    </div>
+                                    <div class="text-slate-300">
+                                        <p>WayPay bruger Stripe som betalingsudbyder. Du bliver guidet gennem en simpel aktivering.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2"></div>
+                        </div>
+
+                        <!-- Trin 4 -->
+                        <div class="md:flex items-center gap-8">
+                            <div class="md:w-1/2"></div>
+                            <div class="md:w-1/2">
+                                <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur rounded-2xl p-6 border border-green-500/30">
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">4</div>
+                                        <div>
+                                            <h4 class="text-2xl font-bold">Trin 4: Færdig!</h4>
+                                            <p class="text-green-300">Klar til at tage imod betalinger</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-slate-300">
+                                        <p>Din konto er aktiv. Tilføj dine ydelser og del dit bookinglink - du er i gang!</p>
+                                    </div>^</div>^</div>^</div>^</div>^</div>^</div>^</div>^</div>^</div>^</main>^</body>^</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WayPay Explainer Video</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        waypay: {
+                            green: '#059669',
+                            greenlight: '#10b981',
+                            dark: '#1f2937',
+                            light: '#f9fafb'
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideRight { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        
+        .video-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        
+        .scene.active { opacity: 1; z-index: 10; }
+        
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #059669, #10b981);
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        
+        .voiceover {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            z-index: 100;
+            max-width: 800px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .voiceover.active { opacity: 1; }
+    </style>
+</head>
+<body class="bg-white m-0 p-0">
+
+    <div class="progress-bar" id="progress"></div>
+    
+    <div class="video-container">
+        
+        <!-- Scene 1: Intro -->
+        <div class="scene active bg-gradient-to-br from-white to-emerald-50" id="scene1">
+            <div class="text-center max-w-4xl px-8">
+                <div class="inline-flex items-center gap-3 mb-8" style="animation: fadeIn 0.8s ease forwards">
+                    <div class="w-14 h-14 bg-waypay-green rounded-xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl font-bold text-waypay-dark">WayPay</h1>
+                </div>
+                
+                <h2 class="text-5xl md:text-6xl font-bold text-waypay-dark mb-6" style="animation: fadeIn 0.8s ease 0.3s forwards; opacity:0">
+                    Kom i gang på <span class="text-waypay-green">5 minutter</span>
+                </h2>
+                
+                <div class="flex justify-center gap-8 mt-12">
+                    <div class="text-center" style="animation: scaleIn 0.6s ease 0.6s forwards; opacity:0">
+                        <div class="text-5xl font-black text-waypay-green">0 kr.</div>
+                        <div class="text-gray-500 text-lg mt-2">i opstart</div>
+                    </div>
+                    <div class="text-center" style="animation: scaleIn 0.6s ease 0.9s forwards; opacity:0">
+                        <div class="text-5xl font-black text-waypay-green">0 kr.</div>
+                        <div class="text-gray-500 text-lg mt-2">per måned</div>
+                    </div>
+                    <div class="text-center" style="animation: scaleIn 0.6s ease 1.2s forwards; opacity:0">
+                        <div class="text-5xl font-black text-waypay-green">8%</div>
+                        <div class="text-gray-500 text-lg mt-2">kun når du sælger</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 2: Hvad er WayPay -->
+        <div class="scene bg-white" id="scene2">
+            <div class="max-w-6xl px-8 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 text-waypay-dark">Nordens smarteste betalingsløsning</h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        WayPay samler booking og betaling i ét enkelt flow. 
+                        Du sparer administration, reducerer no-shows og automatiserer din forretning.
+                    </p>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-waypay-green">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <span class="text-lg">Ingen opstartskostnader</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-waypay-green">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <span class="text-lg">Intet månedligt abonnement</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-waypay-green">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <span class="text-lg">Ingen binding</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-xl">
+                        <div class="text-center">
+                            <div class="text-6xl font-black text-waypay-green mb-2">0 kr.</div>
+                            <div class="text-xl text-gray-500">i fast omkostninger</div>
+                            <div class="my-6 h-px bg-gray-200"></div>
+                            <div class="text-3xl font-bold mb-2">8%</div>
+                            <div class="text-gray-500">per succesfuld transaktion</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 3: Hvad får du -->
+        <div class="scene bg-gradient-to-b from-white to-gray-50" id="scene3">
+            <div class="max-w-6xl px-8">
+                <h2 class="text-4xl font-bold mb-12 text-center text-waypay-dark">Alt får du med 8%</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-waypay-green mb-6">
+                            <i class="fa fa-calendar text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Booking System</h4>
+                        <p class="text-gray-500">Fuld booking funktion indbygget helt gratis. Dine kunder kan booke dig døgnet rundt.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-waypay-green mb-6">
+                            <i class="fa fa-mobile text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Nordiske Betalinger</h4>
+                        <p class="text-gray-500">MobilePay, Vipps, Swish og alle kort indkluderet. Få adgang til millioner af brugere.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-waypay-green mb-6">
+                            <i class="fa fa-file-text text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Automatisk Faktura</h4>
+                        <p class="text-gray-500">Vi håndterer den lovpligtige fakturering automatisk mellem dig og dine kunder.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 4: 4 Trin -->
+        <div class="scene bg-white" id="scene4">
+            <div class="max-w-5xl px-8">
+                <h2 class="text-4xl font-bold mb-12 text-center text-waypay-dark">Kun 4 enkle trin</h2>
+                
+                <div class="space-y-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold">Kontaktoplysninger</h4>
+                            <p class="text-gray-500">Udfyld fornavn, efternavn, telefon og email. 30 sekunders arbejde.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold">Virksomhedsoplysninger</h4>
+                            <p class="text-gray-500">Indtast CVR-nummer og virksomhedsnavn.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold">Forbind Stripe</h4>
+                            <p class="text-gray-500">Du bliver guidet gennem en simpel aktivering.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-waypay-green rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0">4</div>
+                        <div>
+                            <h4 class="text-xl font-bold">Færdig!</h4>
+                            <p class="text-gray-500">Tilføj dine ydelser og del dit bookinglink. Du er i gang!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 5: CTA -->
+        <div class="scene bg-gradient-to-br from-emerald-500 to-emerald-600" id="scene5">
+            <div class="text-center max-w-3xl px-8">
+                <h2 class="text-5xl font-bold text-white mb-6">Klar til at starte?</h2>
+                <p class="text-2xl text-emerald-100 mb-12">
+                    Ingen binding. Ingen risiko. Du betaler kun når du tjener penge.
+                </p>
+                
+                <a href="https://waypay.dk/da/" target="_blank" class="inline-block bg-white text-waypay-green px-12 py-5 rounded-xl font-bold text-xl transition-all transform hover:scale-105 shadow-xl">
+                    Start din gratis konto nu <i class="fa fa-arrow-right ml-3"></i>
+                </a>
+                
+                <p class="mt-8 text-emerald-200">waypay.dk</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="voiceover" id="voiceover">
+        <p id="voiceoverText" class="text-lg text-gray-700"></p>
+    </div>
+
+    <script>
+        const scenes = document.querySelectorAll('.scene');
+        const progress = document.getElementById('progress');
+        const voiceover = document.getElementById('voiceover');
+        const voiceoverText = document.getElementById('voiceoverText');
+        
+        let currentScene = 0;
+        let sceneTimer;
+        let progressTimer;
+        let progressValue = 0;
+        
+        const sceneDuration = 6000; // 6 sekunder pr scene
+        
+        const voiceovers = [
+            "Hej og velkommen til WayPay. Det er helt gratis at starte.",
+            "WayPay er Nordens smarteste løsning til booking og betaling.",
+            "Du får alt inkluderet. Booking system, betalinger og faktura.",
+            "Du er igang på kun 4 enkle trin. Det tager mindre end 5 minutter.",
+            "Start din gratis konto i dag på waypay.dk"
+        ];
+
+        function showScene(index) {
+            scenes.forEach((scene, i) => {
+                scene.classList.toggle('active', i === index);
+            });
+            
+            voiceoverText.textContent = voiceovers[index];
+            voiceover.classList.add('active');
+            
+            progressValue = 0;
+            clearInterval(progressTimer);
+            progressTimer = setInterval(() => {
+                progressValue += 100 / (sceneDuration / 100);
+                progress.style.width = `${progressValue}%`;
+            }, 100);
+            
+            clearTimeout(sceneTimer);
+            sceneTimer = setTimeout(() => {
+                if (currentScene < scenes.length - 1) {
+                    currentScene++;
+                    showScene(currentScene);
+                } else {
+                    clearInterval(progressTimer);
+                    progress.style.width = '100%';
+                    voiceover.classList.remove('active');
+                }
+            }, sceneDuration);
+        }
+
+        // Start video
+        setTimeout(() => showScene(0), 1000);
+
+        // Klik for at springe frem
+        document.addEventListener('click', () => {
+            if (currentScene < scenes.length - 1) {
+                currentScene++;
+                showScene(currentScene);
+            }
+        });
+
+        // Tastatur kontrol
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentScene < scenes.length - 1) {
+                currentScene++;
+                showScene(currentScene);
+            }
+            if (e.key === 'ArrowLeft' && currentScene > 0) {
+                currentScene--;
+                showScene(currentScene);
+            }
+        });
+    </script>
+</body>
+</html>
