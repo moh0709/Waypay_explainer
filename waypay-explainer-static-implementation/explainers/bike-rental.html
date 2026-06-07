@@ -1,1 +1,199 @@
-<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WayPAY Bike Rental Explainer</title><meta name="description" content="Premium WayPAY explainer for bike rental with booking period, payment, deposit, pickup and return."><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="../shared/premium-explainer-style.css"><style>:root{--accent:#16a34a;--soft:#f0fdf4}.bike-photo{background-image:linear-gradient(135deg,rgba(22,163,74,.12),rgba(15,23,42,.12)),url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1600&q=80')}.rental-line{height:12px;border-radius:99px;background:linear-gradient(90deg,#16a34a,#22c55e,#86efac)}</style></head><body><a class="back-link" href="../index.html"><i class="fa fa-arrow-left"></i> Oversigt</a><div class="scene-number"><span id="sceneCounter">1</span> / <span id="sceneTotal">6</span></div><div class="control-bar"><button class="control-btn" id="prevBtn"><i class="fa fa-step-backward"></i></button><button class="control-btn" id="playBtn"><i class="fa fa-pause"></i></button><button class="control-btn" id="nextBtn"><i class="fa fa-step-forward"></i></button></div><div class="progress-wrap"><div class="progress-bar" id="progress"></div></div><div class="voiceover" id="voiceover"><p id="voiceoverText" class="text-base md:text-lg text-slate-700 font-semibold text-center"></p></div><main class="video-container"><section class="scene active bg-gradient-to-br from-white via-green-50 to-emerald-50"><div class="floating-orb w-96 h-96 bg-green-300/30 -top-24 -right-24"></div><div class="max-w-6xl mx-auto text-center"><div class="pre-anim anim-fade-down inline-flex items-center gap-3 mb-8"><div class="w-16 h-16 rounded-2xl accent-bg text-white grid place-items-center shadow-xl"><i class="fa fa-bicycle text-3xl"></i></div><div class="text-left"><h1 class="text-4xl font-black">WayPAY</h1><p class="font-black accent-text">Bike rental explainer</p></div></div><h2 class="pre-anim anim-fade-up text-5xl md:text-7xl font-black leading-none">Book bike, period and payment<br><span class="accent-text">in one flow.</span></h2><p class="pre-anim anim-fade-up mt-7 text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto">The customer chooses bike, rental period, add-ons and payment before pickup.</p><div class="pre-anim anim-scale mt-10 inline-flex gap-3 flex-wrap justify-center"><span class="feature-pill"><i class="fa fa-calendar"></i> Rental period</span><span class="feature-pill"><i class="fa fa-lock"></i> Deposit</span><span class="feature-pill"><i class="fa fa-refresh"></i> Return flow</span></div></div></section><section class="scene bg-white"><div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center"><div class="premium-photo bike-photo pre-anim anim-right"><div class="photo-label"><h3 class="text-2xl font-black">Premium rental pickup</h3><p class="text-slate-600 mt-1">The visual feels like rental: equipment, pickup and return.</p></div></div><div><span class="feature-pill pre-anim anim-left">Rental problem</span><h2 class="pre-anim anim-left mt-6 text-5xl md:text-6xl font-black leading-none">Rental needs control of periods, inventory and returns.</h2><p class="pre-anim anim-left mt-6 text-xl text-slate-600">WayPAY shows what is rented, when it is picked up, what is paid, and when it returns.</p><div class="pre-anim anim-left mt-8 grid grid-cols-3 gap-4"><div class="ui-card p-5"><b class="text-3xl accent-text">1</b><p class="font-black text-slate-700">bike</p></div><div class="ui-card p-5"><b class="text-3xl accent-text">3 days</b><p class="font-black text-slate-700">period</p></div><div class="ui-card p-5"><b class="text-3xl accent-text">kr.</b><p class="font-black text-slate-700">payment</p></div></div></div></div></section><section class="scene bg-slate-950 text-white"><div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center"><div><span class="feature-pill pre-anim anim-right">Rental UI</span><h2 class="pre-anim anim-right mt-6 text-5xl md:text-6xl font-black leading-none">The customer sees available bikes and selects the exact period.</h2><p class="pre-anim anim-right mt-6 text-xl text-slate-300">Add-ons such as helmet and lock can be selected in the same flow.</p><div class="pre-anim anim-right mt-8 dark-card p-6"><div class="text-sm text-emerald-300 font-black">Rental period</div><div class="rental-line mt-4"></div><div class="mt-3 flex justify-between text-sm text-slate-300"><span>Pickup</span><span>Use</span><span>Return</span></div></div></div><div class="pre-anim anim-scale flex justify-center"><div class="phone"><div class="phone-top"></div><div class="p-5 text-slate-900"><small class="font-black text-slate-500">WayPAY Rental</small><h3 class="font-black text-xl">City bike · 3 days</h3><div class="mt-4 rounded-2xl bg-slate-50 p-4 border"><b>Add-ons</b><p class="text-sm text-slate-500">Helmet + lock</p></div><div class="mt-3 rounded-2xl bg-slate-50 p-4 border"><b>Deposit</b><p class="text-sm text-slate-500">Ready before pickup</p></div><button class="mt-5 w-full rounded-2xl accent-bg text-white py-4 font-black">Reserve bike</button></div></div></div></div></section><section class="scene bg-white"><div class="max-w-7xl mx-auto w-full"><div class="text-center max-w-4xl mx-auto"><span class="feature-pill pre-anim anim-fade-down">Rental flow</span><h2 class="pre-anim anim-fade-up mt-6 text-5xl md:text-6xl font-black leading-none">From online reservation to return</h2></div><div class="mt-14 grid md:grid-cols-4 gap-6"><div class="flow-node pre-anim anim-scale"><div class="flow-num">1</div><h3 class="text-xl font-black">Choose bike</h3><p class="text-slate-600 mt-2">Only available bikes are shown.</p></div><div class="flow-node pre-anim anim-scale" style="animation-delay:.15s"><div class="flow-num">2</div><h3 class="text-xl font-black">Choose period</h3><p class="text-slate-600 mt-2">Hours, days or packages.</p></div><div class="flow-node pre-anim anim-scale" style="animation-delay:.3s"><div class="flow-num">3</div><h3 class="text-xl font-black">Pay</h3><p class="text-slate-600 mt-2">Ready before pickup.</p></div><div class="flow-node pre-anim anim-scale" style="animation-delay:.45s"><div class="flow-num">4</div><h3 class="text-xl font-black">Return</h3><p class="text-slate-600 mt-2">Clear end of rental.</p></div></div></div></section><section class="scene bg-gradient-to-br from-green-50 via-white to-white"><div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center"><div><span class="feature-pill pre-anim anim-right">Rental features</span><h2 class="pre-anim anim-right mt-6 text-5xl md:text-6xl font-black leading-none">This explainer feels like rental.</h2><p class="pre-anim anim-right mt-6 text-xl text-slate-600">Focus is inventory, period, deposit, add-ons, pickup and return.</p></div><div class="grid sm:grid-cols-2 gap-4"><div class="ui-card pre-anim anim-left p-6"><i class="fa fa-calendar accent-text text-3xl"></i><h3 class="font-black text-xl mt-4">Availability</h3><p class="text-slate-600 mt-2">Show what can be booked.</p></div><div class="ui-card pre-anim anim-left p-6" style="animation-delay:.12s"><i class="fa fa-lock accent-text text-3xl"></i><h3 class="font-black text-xl mt-4">Deposit</h3><p class="text-slate-600 mt-2">Creates security.</p></div><div class="ui-card pre-anim anim-left p-6" style="animation-delay:.24s"><i class="fa fa-plus accent-text text-3xl"></i><h3 class="font-black text-xl mt-4">Add-ons</h3><p class="text-slate-600 mt-2">Helmet, lock and equipment.</p></div><div class="ui-card pre-anim anim-left p-6" style="animation-delay:.36s"><i class="fa fa-refresh accent-text text-3xl"></i><h3 class="font-black text-xl mt-4">Return</h3><p class="text-slate-600 mt-2">Clear ending.</p></div></div></div></section><section class="scene text-white" style="background:linear-gradient(135deg,#16a34a,#059669)"><div class="max-w-5xl mx-auto text-center"><div class="pre-anim anim-scale w-20 h-20 rounded-3xl bg-white accent-text grid place-items-center mx-auto"><i class="fa fa-bicycle text-4xl"></i></div><h2 class="pre-anim anim-fade-up mt-8 text-5xl md:text-7xl font-black leading-none">Make bike rental easier to book</h2><p class="pre-anim anim-fade-up mt-6 text-2xl text-white/90">A rental-specific explainer, not a generic booking page.</p><button onclick="restartExplainer()" class="pre-anim anim-fade-up mt-10 bg-white accent-text rounded-2xl px-8 py-5 font-black text-xl">Play again</button></div></section></main><script>window.WAYPAY_VOICEOVERS=["WayPAY for bike rental explains reservation, period, deposit and return flow.","Rental needs control of periods, inventory and returns.","The customer chooses bike, period and add-ons and pays online.","The rental flow is bike, period, payment and return.","This explainer is tailor-made for rental with inventory, add-ons and return.","Make bike rental easier to understand and easier to book."];</script><script src="../shared/premium-explainer-engine.js"></script></body></html>
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WayPAY Bike Rental Explainer</title><meta name="description" content="Premium WayPAY explainer for bike rental with booking period, payment, deposit, pickup and return."><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="../shared/premium-explainer-style.css"><style>:root{--accent:#16a34a;--soft:#f0fdf4}.bike-photo{background-image:linear-gradient(135deg,rgba(22,163,74,.12),rgba(15,23,42,.12)),url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1600&q=80')}.rental-line{height:12px;border-radius:99px;background:linear-gradient(90deg,#16a34a,#22c55e,#86efac)}</style></head><body>
+<a class="back-link" href="../premium-library.html"><i class="fa fa-arrow-left"></i> <span id="backLabel">Oversigt</span></a>
+<div class="scene-number"><span id="sceneCounter">1</span> / <span id="sceneTotal">6</span></div>
+<div class="control-bar">
+  <button class="control-btn" id="prevBtn"><i class="fa fa-step-backward"></i></button>
+  <button class="control-btn" id="playBtn"><i class="fa fa-pause"></i></button>
+  <button class="control-btn" id="nextBtn"><i class="fa fa-step-forward"></i></button>
+  <button class="control-btn lang-toggle-btn" id="langBtn">DA</button>
+</div>
+<div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
+<div class="voiceover" id="voiceover"><p id="voiceoverText" class="text-base md:text-lg text-slate-700 font-semibold text-center"></p></div>
+<main class="video-container">
+
+<section class="scene active bg-gradient-to-br from-white via-green-50 to-emerald-50">
+  <div class="floating-orb w-96 h-96 bg-green-300/30 -top-24 -right-24"></div>
+  <div class="max-w-6xl mx-auto text-center">
+    <div class="pre-anim anim-fade-down inline-flex items-center gap-3 mb-8">
+      <div class="w-16 h-16 rounded-2xl accent-bg text-white grid place-items-center shadow-xl"><i class="fa fa-bicycle text-3xl"></i></div>
+      <div class="text-left"><h1 class="text-4xl font-black">WayPAY</h1><p class="font-black accent-text" id="s1label">Bike rental explainer</p></div>
+    </div>
+    <h2 class="pre-anim anim-fade-up text-5xl md:text-7xl font-black leading-none" id="s1h">Book bike, period and payment<br><span class="accent-text">in one flow.</span></h2>
+    <p class="pre-anim anim-fade-up mt-7 text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto" id="s1p">The customer chooses bike, rental period, add-ons and payment before pickup.</p>
+    <div class="pre-anim anim-scale mt-10 inline-flex gap-3 flex-wrap justify-center">
+      <span class="feature-pill"><i class="fa fa-calendar"></i> <span id="pill1">Rental period</span></span>
+      <span class="feature-pill"><i class="fa fa-lock"></i> <span id="pill2">Deposit</span></span>
+      <span class="feature-pill"><i class="fa fa-refresh"></i> <span id="pill3">Return flow</span></span>
+    </div>
+    <div class="key-facts-bar pre-anim anim-fade-up" style="animation-delay:.5s">
+      <span class="key-facts-label"><i class="fa fa-star"></i> <span id="factsLabel">Key facts</span></span>
+      <span class="key-fact-item"><i class="fa fa-check-circle"></i> <span id="kf1">Availability shown in real time</span></span>
+      <span class="key-fact-item"><i class="fa fa-check-circle"></i> <span id="kf2">Deposit and return terms clear at booking</span></span>
+      <span class="key-fact-item"><i class="fa fa-check-circle"></i> <span id="kf3">Late returns handled automatically</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="scene bg-white">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+    <div class="premium-photo bike-photo pre-anim anim-right">
+      <div class="photo-label">
+        <h3 class="text-2xl font-black" id="s2photoTitle">Premium rental pickup</h3>
+        <p class="text-slate-600 mt-1" id="s2photoText">The visual feels like rental: equipment, pickup and return.</p>
+      </div>
+    </div>
+    <div>
+      <span class="feature-pill pre-anim anim-left" id="s2badge">Rental problem</span>
+      <h2 class="pre-anim anim-left mt-6 text-5xl md:text-6xl font-black leading-none" id="s2h">Rental needs control of periods, inventory and returns.</h2>
+      <p class="pre-anim anim-left mt-6 text-xl text-slate-600" id="s2p">WayPAY shows what is rented, when it is picked up, what is paid, and when it returns.</p>
+      <div class="pre-anim anim-left mt-8 grid grid-cols-3 gap-4">
+        <div class="ui-card p-5"><b class="text-3xl accent-text">1</b><p class="font-black text-slate-700" id="c1l">bike</p></div>
+        <div class="ui-card p-5"><b class="text-3xl accent-text" id="c2v">3 days</b><p class="font-black text-slate-700" id="c2l">period</p></div>
+        <div class="ui-card p-5"><b class="text-3xl accent-text">kr.</b><p class="font-black text-slate-700" id="c3l">payment</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene bg-slate-950 text-white">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div>
+      <span class="feature-pill pre-anim anim-right" id="s3badge">Rental UI</span>
+      <h2 class="pre-anim anim-right mt-6 text-5xl md:text-6xl font-black leading-none" id="s3h">The customer sees available bikes and selects the exact period.</h2>
+      <p class="pre-anim anim-right mt-6 text-xl text-slate-300" id="s3p">Add-ons such as helmet and lock can be selected in the same flow.</p>
+      <div class="pre-anim anim-right mt-8 dark-card p-6">
+        <div class="text-sm text-emerald-300 font-black" id="rentalPeriodLabel">Rental period</div>
+        <div class="rental-line mt-4"></div>
+        <div class="mt-3 flex justify-between text-sm text-slate-300">
+          <span id="rp1">Pickup</span><span id="rp2">Use</span><span id="rp3">Return</span>
+        </div>
+      </div>
+    </div>
+    <div class="pre-anim anim-scale flex justify-center">
+      <div class="phone">
+        <div class="phone-top"></div>
+        <div class="p-5 text-slate-900">
+          <small class="font-black text-slate-500">WayPAY Rental</small>
+          <h3 class="font-black text-xl" id="s3phone">City bike · 3 days</h3>
+          <div class="mt-4 rounded-2xl bg-slate-50 p-4 border"><b id="s3row1h">Add-ons</b><p class="text-sm text-slate-500" id="s3row1p">Helmet + lock</p></div>
+          <div class="mt-3 rounded-2xl bg-slate-50 p-4 border"><b id="s3row2h">Deposit</b><p class="text-sm text-slate-500" id="s3row2p">Ready before pickup</p></div>
+          <button class="mt-5 w-full rounded-2xl accent-bg text-white py-4 font-black" id="s3btn">Reserve bike</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene bg-white">
+  <div class="max-w-7xl mx-auto w-full">
+    <div class="text-center max-w-4xl mx-auto">
+      <span class="feature-pill pre-anim anim-fade-down" id="s4badge">Rental flow</span>
+      <h2 class="pre-anim anim-fade-up mt-6 text-5xl md:text-6xl font-black leading-none" id="s4h">From online reservation to return</h2>
+    </div>
+    <div class="mt-14 grid md:grid-cols-4 gap-6">
+      <div class="flow-node pre-anim anim-scale"><div class="flow-num">1</div><h3 class="text-xl font-black" id="fn1h">Choose bike</h3><p class="text-slate-600 mt-2" id="fn1p">Only available bikes are shown.</p></div>
+      <div class="flow-node pre-anim anim-scale" style="animation-delay:.15s"><div class="flow-num">2</div><h3 class="text-xl font-black" id="fn2h">Choose period</h3><p class="text-slate-600 mt-2" id="fn2p">Hours, days or packages.</p></div>
+      <div class="flow-node pre-anim anim-scale" style="animation-delay:.3s"><div class="flow-num">3</div><h3 class="text-xl font-black" id="fn3h">Pay</h3><p class="text-slate-600 mt-2" id="fn3p">Ready before pickup.</p></div>
+      <div class="flow-node pre-anim anim-scale" style="animation-delay:.45s"><div class="flow-num">4</div><h3 class="text-xl font-black" id="fn4h">Return</h3><p class="text-slate-600 mt-2" id="fn4p">Clear end of rental.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene bg-gradient-to-br from-green-50 via-white to-white">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="feature-pill pre-anim anim-right" id="s5badge">Rental features</span>
+      <h2 class="pre-anim anim-right mt-6 text-5xl md:text-6xl font-black leading-none" id="s5h">This explainer feels like rental.</h2>
+      <p class="pre-anim anim-right mt-6 text-xl text-slate-600" id="s5p">Focus is inventory, period, deposit, add-ons, pickup and return.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div class="ui-card pre-anim anim-left p-6"><i class="fa fa-calendar accent-text text-3xl"></i><h3 class="font-black text-xl mt-4" id="f1h">Availability</h3><p class="text-slate-600 mt-2" id="f1p">Show what can be booked.</p></div>
+      <div class="ui-card pre-anim anim-left p-6" style="animation-delay:.12s"><i class="fa fa-lock accent-text text-3xl"></i><h3 class="font-black text-xl mt-4" id="f2h">Deposit</h3><p class="text-slate-600 mt-2" id="f2p">Creates security.</p></div>
+      <div class="ui-card pre-anim anim-left p-6" style="animation-delay:.24s"><i class="fa fa-plus accent-text text-3xl"></i><h3 class="font-black text-xl mt-4" id="f3h">Add-ons</h3><p class="text-slate-600 mt-2" id="f3p">Helmet, lock and equipment.</p></div>
+      <div class="ui-card pre-anim anim-left p-6" style="animation-delay:.36s"><i class="fa fa-refresh accent-text text-3xl"></i><h3 class="font-black text-xl mt-4" id="f4h">Return</h3><p class="text-slate-600 mt-2" id="f4p">Clear ending.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene text-white" style="background:linear-gradient(135deg,#16a34a,#059669)">
+  <div class="max-w-5xl mx-auto text-center">
+    <div class="pre-anim anim-scale w-20 h-20 rounded-3xl bg-white accent-text grid place-items-center mx-auto"><i class="fa fa-bicycle text-4xl"></i></div>
+    <h2 class="pre-anim anim-fade-up mt-8 text-5xl md:text-7xl font-black leading-none" id="s6h">Make bike rental easier to book</h2>
+    <p class="pre-anim anim-fade-up mt-6 text-2xl text-white/90" id="s6p">A rental-specific explainer, not a generic booking page.</p>
+    <p class="pre-anim anim-fade-up mt-10 text-white/75 text-sm font-bold tracking-wide uppercase" style="letter-spacing:.08em" id="s6kicker">Get started with a free business profile</p>
+    <a href="https://waypay.dk/opret" class="pre-anim anim-fade-up mt-3 inline-flex items-center gap-3 bg-white accent-text rounded-2xl px-8 py-5 font-black text-xl shadow-2xl hover:shadow-none transition" style="text-decoration:none" id="s6primary">Create my business <i class="fa fa-arrow-right text-base"></i></a>
+    <div class="pre-anim anim-fade-up mt-5"><button onclick="restartExplainer()" class="text-white/55 text-sm font-semibold hover:text-white/80 transition" style="background:none;border:none;cursor:pointer" id="s6btn">↺ Play again</button></div>
+  </div>
+</section>
+
+</main>
+<script>
+window.WAYPAY_VOICEOVERS=["WayPAY for bike rental explains reservation, period, deposit and return flow.","Rental needs control of periods, inventory and returns.","The customer chooses bike, period and add-ons and pays online.","The rental flow is bike, period, payment and return.","This explainer is tailor-made for rental with inventory, add-ons and return.","Make bike rental easier to understand and easier to book."];
+(function(){
+  var T={
+    en:{
+      backLabel:'Overview',langBtn:'DA',s1label:'Bike rental explainer',
+      s1h:'Book bike, period and payment<br><span class="accent-text">in one flow.</span>',
+      s1p:'The customer chooses bike, rental period, add-ons and payment before pickup.',
+      pill1:'Rental period',pill2:'Deposit',pill3:'Return flow',
+      factsLabel:'Key facts',kf1:'Availability shown in real time',kf2:'Deposit and return terms clear at booking',kf3:'Late returns handled automatically',
+      s2badge:'Rental problem',s2h:'Rental needs control of periods, inventory and returns.',
+      s2p:'WayPAY shows what is rented, when it is picked up, what is paid, and when it returns.',
+      s2photoTitle:'Premium rental pickup',s2photoText:'The visual feels like rental: equipment, pickup and return.',
+      c1l:'bike',c2v:'3 days',c2l:'period',c3l:'payment',
+      s3badge:'Rental UI',s3h:'The customer sees available bikes and selects the exact period.',
+      s3p:'Add-ons such as helmet and lock can be selected in the same flow.',
+      rentalPeriodLabel:'Rental period',rp1:'Pickup',rp2:'Use',rp3:'Return',
+      s3phone:'City bike · 3 days',s3row1h:'Add-ons',s3row1p:'Helmet + lock',s3row2h:'Deposit',s3row2p:'Ready before pickup',s3btn:'Reserve bike',
+      s4badge:'Rental flow',s4h:'From online reservation to return',
+      fn1h:'Choose bike',fn1p:'Only available bikes are shown.',fn2h:'Choose period',fn2p:'Hours, days or packages.',
+      fn3h:'Pay',fn3p:'Ready before pickup.',fn4h:'Return',fn4p:'Clear end of rental.',
+      s5badge:'Rental features',s5h:'This explainer feels like rental.',
+      s5p:'Focus is inventory, period, deposit, add-ons, pickup and return.',
+      f1h:'Availability',f1p:'Show what can be booked.',f2h:'Deposit',f2p:'Creates security.',
+      f3h:'Add-ons',f3p:'Helmet, lock and equipment.',f4h:'Return',f4p:'Clear ending.',
+      s6h:'Make bike rental easier to book',s6p:'A rental-specific explainer, not a generic booking page.',s6kicker:'Get started with a free business profile',s6primary:'Create my business',s6btn:'↺ Play again',
+      voiceovers:["WayPAY for bike rental explains reservation, period, deposit and return flow.","Rental needs control of periods, inventory and returns.","The customer chooses bike, period and add-ons and pays online.","The rental flow is bike, period, payment and return.","This explainer is tailor-made for rental with inventory, add-ons and return.","Make bike rental easier to understand and easier to book."]
+    },
+    da:{
+      backLabel:'Oversigt',langBtn:'EN',s1label:'Cykeludlejning explainer',
+      s1h:'Book cykel, periode og betaling<br><span class="accent-text">i ét flow.</span>',
+      s1p:'Kunden vælger cykel, lejeperiode, tilvalg og betaling inden afhentning.',
+      pill1:'Lejeperiode',pill2:'Depositum',pill3:'Returflow',
+      factsLabel:'Nøglefakta',kf1:'Tilgængelighed vises i realtid',kf2:'Depositum og returvilkår er klare ved booking',kf3:'Sen returnering håndteres automatisk',
+      s2badge:'Lejeudfordringen',s2h:'Leje kræver kontrol over perioder, lager og returnering.',
+      s2p:'WayPAY viser, hvad der lejes, hvornår det afhentes, hvad der betales, og hvornår det returneres.',
+      s2photoTitle:'Premium leje-afhentning',s2photoText:'Det visuelle skal føles som leje: udstyr, afhentning og returnering.',
+      c1l:'cykel',c2v:'3 dage',c2l:'periode',c3l:'betaling',
+      s3badge:'Leje-UI',s3h:'Kunden ser ledige cykler og vælger den nøjagtige periode.',
+      s3p:'Tilvalg som hjelm og lås kan vælges i samme flow.',
+      rentalPeriodLabel:'Lejeperiode',rp1:'Afhentning',rp2:'Brug',rp3:'Returnering',
+      s3phone:'Bycykel · 3 dage',s3row1h:'Tilvalg',s3row1p:'Hjelm + lås',s3row2h:'Depositum',s3row2p:'Klar inden afhentning',s3btn:'Reserver cykel',
+      s4badge:'Lejeflow',s4h:'Fra online reservation til returnering',
+      fn1h:'Vælg cykel',fn1p:'Kun tilgængelige cykler vises.',fn2h:'Vælg periode',fn2p:'Timer, dage eller pakker.',
+      fn3h:'Betal',fn3p:'Klar inden afhentning.',fn4h:'Returner',fn4p:'Klar afslutning på lejemålet.',
+      s5badge:'Lejefeatures',s5h:'Denne explainer føles som leje.',
+      s5p:'Fokus er lager, periode, depositum, tilvalg, afhentning og returnering.',
+      f1h:'Tilgængelighed',f1p:'Vis, hvad der kan bookes.',f2h:'Depositum',f2p:'Skaber sikkerhed.',
+      f3h:'Tilvalg',f3p:'Hjelm, lås og udstyr.',f4h:'Returnering',f4p:'Klar afslutning.',
+      s6h:'Gør cykeludlejning nemmere at booke',s6p:'En lejespecifik explainer, ikke en generisk bookingside.',s6kicker:'Kom igang med en gratis business profil',s6primary:'Opret min forretning',s6btn:'↺ Afspil igen',
+      voiceovers:["WayPAY til cykeludlejning forklarer reservation, periode, depositum og returflow.","Leje kræver kontrol over perioder, lager og returnering.","Kunden vælger cykel, periode og tilvalg og betaler online.","Lejeflowet er cykel, periode, betaling og returnering.","Denne explainer er skræddersyet til leje med lager, tilvalg og returnering.","Gør cykeludlejning nemmere at forstå og nemmere at booke."]
+    }
+  };
+  var lang=localStorage.getItem('waypay_lang')||'en';
+  var t=T[lang]||T['en'];
+  var ids=['backLabel','s1label','pill1','pill2','pill3','factsLabel','kf1','kf2','kf3',
+    's2badge','s2p','s2photoTitle','s2photoText','c1l','c2v','c2l','c3l',
+    's3badge','s3p','rentalPeriodLabel','rp1','rp2','rp3',
+    's3phone','s3row1h','s3row1p','s3row2h','s3row2p','s3btn',
+    's4badge','fn1h','fn1p','fn2h','fn2p','fn3h','fn3p','fn4h','fn4p',
+    's5badge','s5p','f1h','f1p','f2h','f2p','f3h','f3p','f4h','f4p',
+    's6kicker','s6primary','s6p','s6btn','langBtn'];
+  ids.forEach(function(id){var el=document.getElementById(id);if(el&&t[id]!==undefined)el.textContent=t[id];});
+  ['s1h','s2h','s3h','s4h','s5h','s6h'].forEach(function(id){var el=document.getElementById(id);if(el&&t[id]!==undefined)el.innerHTML=t[id];});
+  window.WAYPAY_VOICEOVERS=t.voiceovers;
+  document.getElementById('langBtn').onclick=function(){localStorage.setItem('waypay_lang',lang==='en'?'da':'en');location.reload();};
+})();
+</script>
+<script src="../shared/premium-explainer-engine.js"></script>
+</body></html>
